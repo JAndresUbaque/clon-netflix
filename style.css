@@ -1,35 +1,315 @@
-* {
-  margin: 0;
+*  {
+  margin:0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
-    background-color: #141414;
-}
-.header-content {
-    background-color: #141414;
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
-    padding: 20px;
- 
-}
-.logo {
-    height: 150px;
-    width: 200px;
-    margin-left: 0%;
+:root {
+  --netflix-red: #e50914;   /* Guardamos el color rojo de Netflix */
+  --bg: #000;               /* Fondo principal (negro) */
+  --bg-dark: #141414;       /* Fondo oscuro para secciones */
+  --text: #fff;             /* Texto blanco */
+  --muted: #b3b3b3;         /* Texto gris */
+  --line: #333;             /* Bordes sutiles */
+  --card: #1f1f1f;          /* Fondo de tarjetas */
 }
 
-.boton{
-  background: red;
-  color: white;
-  padding: 10px 20px;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding:0 20px;
+}
+
+.boton {
+  background-color: var(--netflix-red);
+  color: #fff;
   border: none;
+  padding: 12px 22px;
+  font-size: 1rem;
+  border-radius: 4px;
   cursor: pointer;
+  font-weight: 700;
 }
- main {
-    color: aliceblue;
-    font-family: Arial, Helvetica, sans-serif;
 
+.boton:hover {
+  background-color: #f40612;
+}
+
+header {
+  top: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0,6);
+  padding: 16px 0;
+  backdrop-filter: saturate(120%) blur(4px);
+}
+
+.header-content {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 12px;
+}
+
+.logo {
+  height: 40px;
+}
+
+select{
+  background-color: rgba(0,0,0,0.6);
+  color: var(--text);
+  border: 1px solid var(--line);
+  padding: 8px 32px 8px 8px;
+  border-radius: 3px;
+  appearance: none;
+}
+main {
+   position: relative;
+   background: url("assets/fondo.jpg") center/cover no-repeat;
+   padding: 100px 20px;
+   text-align: center;
+}
+
+main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(0,0,0,0.35), rgba(0,0,0,0.75)),
+    linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
  }
+
+ .main-content {
+  position: relative;
+  z-index: 1;
+ }
+
+main h1 {
+  font-size: 2.6rem;
+  margin-bottom: 16px;
+}
+
+main p {
+  margin-bottom: 16px;
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+input[type="email"] {
+ background-color: #1c1c1c;
+  border: 1px solid #444;      
+  color: #fff;                
+  padding: 16px;               
+  border-radius: 6px;          
+  font-size: 16px;             
+  width: 100%;                 
+  max-width: 500px;  
+}
+
+.tendencias {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.tendencias h2 {
+  margin: 12px 0 16px;
+}
+
+.carrusel {
+  display: flex;
+  gap: 10px;
+  overflow-x:auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.carrusel::-webkit-scrollbar { 
+ display: none; 
+}
+
+ .pelicula {
+  position: relative;
+}
+
+.pelicula img {
+  width: 160px;
+  border-radius: 6px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pelicula img:hover{
+transform: scale(1.08);
+box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+cursor: pointer;
+}
+
+.pelicula span {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 4rem;
+  font-weight: 800;
+  color: #000;
+  -webkit-text-stroke: 1px white;
+  text-shadow: 2px 2px 4px #000;
+
+}
+.pelicula span:hover{
+transform: scale(1.08);
+}
+
+.motivos {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+.motivos h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.motivos > .motivo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.motivo .card {
+  background-color: var(--card);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.card p {
+  margin-top: 16px;
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+.motivo .card:hover {
+   transform: translateY(-5px); 
+  }
+
+.faq {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+} 
+
+.faq h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.pregunta {
+  background-color: var(--card);
+  margin-bottom: 12px;
+  border-radius: 6px;
+  overflow: hidden
+ }
+
+ .pregunta > button {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: var(--text);
+  border: none;
+  padding: 18px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  }
+
+.pregunta > button:hover {
+     background: #2a2a2a; 
+    }
+
+.pregunta > p {
+  padding: 0 20px 18px 20px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.email {
+  max-width: 900px;
+  margin: 30px auto 60px;
+  padding: 0 20px;
+  text-align: center;
+  background-color: #000;
+}
+
+.email p {
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+footer {
+  background-color: var(--bg-dark);
+  padding: 40px 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-content ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px 20px;
+  margin-bottom: 20px;
+}
+
+.footer-content a { 
+  color: var(--muted); 
+}
+.footer-content a:hover { 
+  text-decoration: underline;
+ }
+
+ footer select {
+  background-color: rgba(0,0,0,0.6);
+  color: var(--text);
+  border: 1px solid var(--line);
+  padding: 8px 32px 8px 8px;
+  border-radius: 3px;
+  appearance: none;
+  margin-bottom: 12px;
+}
+
+footer p {
+  margin-top: 8px; 
+}
+
+
+@media (max-width: 768px) {
+  .motivos > .motivo { grid-template-columns: 1fr 1fr; }
+  .footer-content ul { grid-template-columns: 1fr 1fr; }
+  .pelicula img { width: 150px; }
+}
+
+@media (max-width: 480px) {
+  main { padding: 80px 16px; }
+  main h1 { font-size: 2rem; }
+  .motivos > .motivo { grid-template-columns: 1fr; }
+  .footer-content ul { grid-template-columns: 1fr; }
+  .pelicula img { width: 130px; }
+}
